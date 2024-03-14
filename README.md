@@ -7,7 +7,7 @@ The challenges presented in these [Jupyter Notebooks](https://jupyter.org) that 
 Your answers and progress will not be known to the teacher: they have no access to your progress on these challenges. So, it is up to you to solve the challenges yourself and to be honest to yourself. At the end of these challenge, some well meant advice will be given. It is up to you to follow this up.
 
 ## The Structure Of The Challenges
-Each of the notebook file contains a challenge, which is auto-graded. For each challenge, you should start by reading the instructions in the first cell. In the second cell, you are requested to code your solution by replacing these two lines:
+Each of the notebook files contains a challenge, which is auto-graded. For each challenge, you should start by reading the instructions in the first cell. In the second cell, you are requested to code your solution by replacing these two lines:
 ```python
 # YOUR CODE HERE
 raise NotImplementedError()
@@ -29,11 +29,11 @@ def my_function(a, b):
     ...
 ```
 
-Please use them often. The **prints** will not influence the auto-grading mechanism, since these only check the finally returned value from your function.
+Please use them often. These **prints** will not influence the auto-grading mechanism, since only the finally returned value(s) will be checked.
 
 ## Final instruction
 
-Before you start solving any of the challenge, please press `Ctrl-Enter` in very first the cell (PC) or `Command-Enter` (Mac). It will load the modules needed for testing and auto-grading the challenges. After you did, a number between the square brackets will appear in front of the cell, like - for example:
+Before you start solving any of the challenge, please press `Ctrl-Enter` (PC) or `Command-Enter` (Mac) in very first the cell. It will load the modules needed for testing and auto-grading the challenges. After you did, a number between the square brackets will appear in front of the cell, like - for example:
 ```python
 [1]
 ```
