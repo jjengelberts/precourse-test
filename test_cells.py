@@ -216,7 +216,7 @@ def test_challenge_1(f):
     b = _keyin_int(default=7, description="an integer value for b")
     c = _keyin_int(default=5, description="an integer value for c")
     result = f(a, b, c)
-        if result is None:
+    if result is None:
         print("Your function does not return anything (yet)!")
     elif type(result) != list:
         print(f"Your function does not return an integer, but an object of type {type(result)}")
