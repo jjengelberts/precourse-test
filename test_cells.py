@@ -244,7 +244,8 @@ def test_challenge_2a(f):
             break
         except ValueError:
             print('The second character should be an integer in range 1 .. 8!')
-                continue
+            continue
+    
     print()
     result = f(square.upper())
     if result is None:
