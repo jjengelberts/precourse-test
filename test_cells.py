@@ -1,4 +1,5 @@
 ### Necessary imports
+import os
 import random
 import requests
 
@@ -218,7 +219,7 @@ def test_challenge_1(f):
     result = f(a, b, c)
     if result is None:
         print("Your function does not return anything (yet)!")
-    elif type(result) != list:
+    elif type(result) != int:
         print(f"Your function does not return an integer, but an object of type {type(result)}")
     else:
         print(f"\nYour function {f.__name__} determines that {result} is the largest value of {a}, {b} and {c}.")
@@ -293,15 +294,110 @@ def test_challenge_2b(f):
     else:
         print('The raw_data', raw_data, 'has an average of', result)
 
+
+def _keyin_board(rank=None, default=[[1, 0, 0], [1, 0, 0], [0, 1, 0]], description='board', should_be_positive=False):
+    defaults = []
+    for row in default:
+         defaults.append(' '.join([str(x) for x in row]))
+
+    rows, cols = 3, 3
+    matrix = []
+    print()
+    
+    for row in range(rows):
+        row_values = []
+        while len(row_values) != cols:
+            default = defaults[row]
+            not_ok = True
+            while not_ok:
+                row_values = _keyin_ints(rank=row+1, default=default, description=f'{cols} zeroes and ones for row', should_be_positive=should_be_positive)
+                for v in row_values:
+                    if v < 0 or v > 1:
+                        print("Numbers should be either zero or one!\n\n")
+                        break
+                else:
+                    not_ok = False
+            if len(row_values) != cols:
+                print()
+                print(f'Please enter {cols} zeroes and ones!')
+            else:
+                break
+        matrix.append(row_values)    
+    return matrix
+
+
+def test_challenge_3a(f):
+    board = _keyin_board()
+    result = f(board)
+    print()
+    if result == 0:
+        print("Your function returns '0' and hence indicates that the center cell will be dead.")
+    elif result == 1:
+        print("Your function returns '1' and hence indicates that the center cell will be alive.")
+    else:
+        print("Your function returns neither '0', nor '1'. Are you sure your function is ready to be tested?")
         
-### Download assertions.pickle
-assertion_obj = requests.get("https://raw.githubusercontent.com/jjengelberts/precourse-test/main/assertions.pickle")
-if assertion_obj.status_code != 200:
-    print('Could not download assertions.pickle, hence tests can not be automatically verified!')
-else:
-    try:
-        with open('assertions.pickle', 'wb') as f:
-            f.write(assertion_obj.content)
-        print('Test cells imported OK')
-    except:
-        print('Assertions could not be written to disk!')
+        
+def test_challenge_3b(f):
+    timings = []
+    timings.append(_keyin_int(rank=None, default=49, description='timing Rotterdam-Utrecht (A20-A12, part 0)', should_be_positive=True))
+    timings.append(_keyin_int(rank=None, default=28, description='timing Utrecht-Hoevelaken (A27-A1, part 1)', should_be_positive=True))
+    timings.append(_keyin_int(rank=None, default=21, description='timing Utrecht-Hoevelaken (A28, part 2)', should_be_positive=True))
+    timings.append(_keyin_int(rank=None, default=51, description='timing Utrecht-Apeldoorn (A12-A50, part 3)', should_be_positive=True))
+    timings.append(_keyin_int(rank=None, default=32, description='timing Hoevelaken Apeldoorn (A1, part 4)', should_be_positive=True))
+    result = f(timings)
+    print()
+    if type(result) == int:
+        print(f"The shortest route from Rotterdam to Apeldoorn takes {result} minutes.")
+    else:
+        print(f"Your function does not return an integer value. Is it working correctly?")
+        
+        
+def test_challenge_3c(f):
+    default = ['The Great Gatsby', 'Pride and Prejudice', 'The Catcher in the Rye', 'Wuthering Heights', 'Frankenstein']
+    book = input("Enter first book title for John (Enter for default example list of books)")
+    if book == "":
+        john = default
+    else:
+        john = [book]
+        count = 1
+        while book is not None:
+            count += 1
+            book = _keyin_str(rank=count, default=None, description='book title for John (leave empty if done)')
+            if book is not None:
+                john.append(book)
+    default = ['Wuthering Heights', 'The Adventures of Huckleberry Finn', 'Jane Eyre', 'Pride and Prejudice', 'Animal Farm']
+    book = input("Enter first book title for Mary (Enter for default example list of books)")
+    if book == "":
+        mary = default
+    else:
+        mary = [book]
+        count = 1
+        while book is not None:
+            count += 1
+            book = _keyin_str(rank=count, default=None, description='book title for Mary (leave empty if done)')
+            if book is not None:
+                mary.append(book)
+    result = f(john, mary)
+    if result is None:
+        print("\nYour function does not (yet) return a value!")
+    elif type(result) != list:
+        print(f"\nYour function does not return a list, but an object of type {type(result)}!")
+    else:
+        print("Books read by John:\n *", "\n * ".join(john), "\n")
+        print("Books read by Mary:\n *", "\n * ".join(mary), "\n")
+        print("Books read only by John or Mary:\n *", "\n * ".join(result), "\n")
+        
+        
+### Download assertions.pickle (prevent overwriting)
+if not os.path.exists('assertions.pickle'):
+    assertion_obj = requests.get("https://raw.githubusercontent.com/jjengelberts/precourse-test/main/assertions.pickle")
+    if assertion_obj.status_code != 200:
+        print('Could not download assertions.pickle, hence tests can not be automatically verified!')
+    else:
+        try:
+            with open('assertions.pickle', 'wb') as f:
+                f.write(assertion_obj.content)
+            print('Test cells imported OK')
+        except:
+            print('Assertions could not be written to disk!')
