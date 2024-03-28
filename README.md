@@ -1,8 +1,7 @@
 # Welcome!
 
 Welcome to our self-assessment test, designed to verify your programming proficiency in Python for our research master's program. Through three tailored challenges, you'll gain valuable insights into your current Python skills level. The questions will dynamically adjust based on your performance.
-These self-adjusting challenges are presented in [Jupyter Notebooks](https://jupyter.org) running on [Google Colab](https://colab.research.google.com/). Please ensure you have a Google account to run the notebooks. 
-The estimated completion time varies (CAN WE GIVE AN AVERAGE?), and you can pause and resume at any point. 
+These self-adjusting challenges are presented in [Jupyter Notebooks](https://jupyter.org) running on [Google Colab](https://colab.research.google.com/). Please ensure you have a Google account to run the notebooks. The estimated completion time varies, and you can pause and resume at any point. 
 
 Your progress and responses are strictly anonymous and will not be accessible to any program personnel, including teachers, DGS, or staff members. You'll have sole access to your progress on these challenges. So, it is up to you to solve the challenges by yourself and to be honest with yourself. At the end of these challenges, you'll receive tailored advice based on your results. We highly recommend you follow this advice before you start the program. 
 

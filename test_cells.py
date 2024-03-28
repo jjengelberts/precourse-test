@@ -340,11 +340,7 @@ def test_challenge_3a(f):
         
 def test_challenge_3b(f):
     timings = []
-    timings.append(_keyin_int(rank=None, default=49, description='timing Rotterdam-Utrecht (A20-A12, part 0)', should_be_positive=True))
-    timings.append(_keyin_int(rank=None, default=28, description='timing Utrecht-Hoevelaken (A27-A1, part 1)', should_be_positive=True))
-    timings.append(_keyin_int(rank=None, default=21, description='timing Utrecht-Hoevelaken (A28, part 2)', should_be_positive=True))
-    timings.append(_keyin_int(rank=None, default=51, description='timing Utrecht-Apeldoorn (A12-A50, part 3)', should_be_positive=True))
-    timings.append(_keyin_int(rank=None, default=32, description='timing Hoevelaken Apeldoorn (A1, part 4)', should_be_positive=True))
+    timings = _keyin_ints(rank=None, default="49 28 21 51 32", description="five timings for parts 0-4", should_be_positive=True)
     result = f(timings)
     print()
     if type(result) == int:
@@ -401,3 +397,5 @@ if not os.path.exists('assertions.pickle'):
             print('Test cells imported OK')
         except:
             print('Assertions could not be written to disk!')
+else:
+    print('Test cells imported OK')
