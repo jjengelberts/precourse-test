@@ -5,6 +5,9 @@ These self-adjusting challenges are presented in [Jupyter Notebooks](https://jup
 
 Your progress and responses are strictly anonymous and will not be accessible to any program personnel, including teachers, DGS, or staff members. You'll have sole access to your progress on these challenges. So, it is up to you to solve the challenges by yourself and to be honest with yourself. At the end of these challenges, you'll receive tailored advice based on your results. We highly recommend you follow this advice before you start the program. 
 
+## Usage of ChatGPT
+For the courses in this curriculum, *understanding* the methodologies is at least as important as *applying* them. ChatGPT, and other Generative AI methods, although very helpful, may obscure your *understanding* by supplying a (nearly) working solution. Be aware that during the exams of several courses, ChatGPT will neither be allowed, nor be available. In other courses, an oral exam, in addition to a written part, may be used to test your *understanding* of the underlying methodologies.
+
 ## The Structure Of The Challenges
 Each notebook file contains an auto-graded challenge. For each challenge, begin by reading the instructions in the first cell. Next, replace the placeholder lines with your Python code in the second cell to solve the challenge:
 ```python
